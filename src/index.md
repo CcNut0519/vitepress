@@ -11,20 +11,27 @@ hero:
   actions:
     - theme: brand
       text: Markdown Examples
-      link: /method/markdown-examples
+      link: /招式套路/markdown-examples
     - theme: alt
       text: API Examples
-      link: /method/api-examples
+      link: /招式套路/api-examples
 
 features:
   - icon: 🎓
     title: 内功心法
     details: 重要的技能将是你成长的养分
+    link: /内功心法
   - icon: 🛠️
     title: 招式套路
     details: 快速解决问题的好方法
-  - icon: 🎈
-    title: Bubbles
-    details: 生活中那些美好的小事情
----
+    link: /招式套路
+  - icon: 💻
+    title: 领域实践
+    details: 将内功心法融会贯通运用于实践
+    link: /领域实践
+  - icon: 📷
+    title: 生活
+    details: 定格生活中的那些美好
+    link: /生活
 
+---
