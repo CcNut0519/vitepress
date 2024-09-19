@@ -52,6 +52,7 @@ export default defineConfig({
           { text: "算法&数据结构", items: [] },
           { text: "为人处世", items: [] },
         ],
+        link: "/内功心法",
       },
       {
         text: "🛠️招式套路",
@@ -59,10 +60,20 @@ export default defineConfig({
           { text: "Markdown Examples", link: "/招式套路/markdown-examples" },
           { text: "Runtime API Examples", link: "/招式套路/api-examples" },
         ],
+        link: "/招式套路",
       },
       {
-        text: "🎈美好生活",
-        items: [{ text: "摄影", link: "/招式套路/markdown-examples" }],
+        text: "💻领域实践",
+        items: [{ text: "工作", link: "/招式套路/markdown-examples" }],
+        link: "/生活",
+      },
+      {
+        text: "📷摄影",
+        items: [
+          { text: "风景", link: "/摄影/风景" },
+          { text: "人文", link: "/摄影/生活" },
+        ],
+        link: "/摄影",
       },
     ],
     search: {
