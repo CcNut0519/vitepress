@@ -40,7 +40,14 @@ export default defineConfig({
             items: [
               { text: "数据链路层", items: [] },
               { text: "网络层", items: [] },
-              { text: "传输层", items: [] },
+              {
+                text: "传输层",
+                items: [
+                  { text: "TCP", link: "/内功心法/计算机网络/传输层/TCP" },
+                  { text: "UDP", link: "/内功心法/计算机网络/传输层/UDP" },
+                ],
+                collapsed: true,
+              },
               { text: "应用层", items: [] },
             ],
             collapsed: true,
