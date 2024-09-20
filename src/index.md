@@ -6,7 +6,7 @@ hero:
   name: "CcNut`s Free Platform"
   text: "Share Serendipity and Knowledge for free"
   image:
-    src: /logo.svg
+    src: /dog.png
     alt: VitePress
   actions:
     - theme: brand

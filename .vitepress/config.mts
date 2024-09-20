@@ -9,7 +9,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: "deep",
-    logo: "/logo.svg",
+    logo: "/dog.png",
     socialLinks: [{ icon: "github", link: "https://github.com/CcNut0519" }],
     nav: [
       { text: "Home", link: "/" },
@@ -23,8 +23,8 @@ export default defineConfig({
           {
             text: "编程学习",
             items: [
-              { text: "C语言", items: [] },
-              { text: "JavaScript", items: [] },
+              { text: "C语言", link: "/内功心法/编程学习/C语言" },
+              { text: "JavaScript", link: "/内功心法/编程学习/JavaScript" },
             ],
             collapsed: true,
           },
