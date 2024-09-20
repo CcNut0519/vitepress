@@ -7,13 +7,20 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   themeConfig: {
+    docFooter: {
+      prev: "上一篇",
+      next: "下一篇",
+    },
+    darkModeSwitchLabel: "外观",
+    returnToTopLabel: "返回顶部",
+    sidebarMenuLabel: "菜单",
     // https://vitepress.dev/reference/default-theme-config
-    outline: "deep",
+    outline: { level: "deep", label: "本文目录" },
     logo: "https://image-host.pages.dev/learn/2024_09_20_dog.png",
     socialLinks: [{ icon: "github", link: "https://github.com/CcNut0519" }],
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Introduction", link: "/Introduction" },
+      { text: "首页", link: "/" },
+      { text: "关于", link: "/Introduction" },
     ],
 
     sidebar: [

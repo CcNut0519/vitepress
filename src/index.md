@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "CcNut`s Free Platform"
-  text: "Share Serendipity and Knowledge for free"
+  name: "CcNutの自由平台"
+  text: "Share Knowledge and Serendipity for free"
   image:
     src: https://image-host.pages.dev/learn/2024_09_20_dog.png
     alt: VitePress
