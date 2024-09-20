@@ -12,7 +12,7 @@ node test.js
 
 嵌入在HTML中的JavaScript必须在`<script></script>`中间，可放在`body`和`head`的任意位置，通常是放到`head`中或者页面底部，不干扰页面内容，数量不限
 
-可以使用debugger语句来调试JavaScript代码，例如：
+可以使用`debugger`语句来调试JavaScript代码，例如：
 
 ``` js
 debugger;
