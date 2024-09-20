@@ -5,6 +5,7 @@ export default defineConfig({
   title: "CcNut`s Free Platform",
   description: "Share Serendipity and Knowledge for free",
   cleanUrls: true,
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: "deep",
