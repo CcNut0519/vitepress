@@ -10,8 +10,8 @@ hero:
     alt: VitePress
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /招式套路/markdown-examples
+      text: Introduction
+      link: /Introduction
     - theme: alt
       text: API Examples
       link: /招式套路/api-examples

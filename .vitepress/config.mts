@@ -8,16 +8,11 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: "deep",
+    logo: "/logo.svg",
     socialLinks: [{ icon: "github", link: "https://github.com/CcNut0519" }],
     nav: [
       { text: "Home", link: "/" },
-      {
-        text: "招式套路",
-        items: [
-          { text: "Markdown Examples", link: "/招式套路/markdown-examples" },
-          { text: "Runtime API Examples", link: "/招式套路/api-examples" },
-        ],
-      },
+      { text: "Introduction", link: "/Introduction" },
     ],
 
     sidebar: [
@@ -48,11 +43,14 @@ export default defineConfig({
               { text: "Linux", items: [], collapsed: true },
               { text: "Windows", items: [], collapsed: true },
             ],
+            collapsed: true,
           },
-          { text: "算法&数据结构", items: [] },
+          { text: "算法&数据结构", items: [], collapsed: true },
+          { text: "软件测试", items: [], collapsed: true },
+          { text: "好问题", items: [] },
           { text: "为人处世", items: [] },
         ],
-        link: "/内功心法",
+        collapsed: true,
       },
       {
         text: "🛠️招式套路",
@@ -60,12 +58,33 @@ export default defineConfig({
           { text: "Markdown Examples", link: "/招式套路/markdown-examples" },
           { text: "Runtime API Examples", link: "/招式套路/api-examples" },
         ],
-        link: "/招式套路",
+        collapsed: true,
       },
       {
         text: "💻领域实践",
-        items: [{ text: "工作", link: "/招式套路/markdown-examples" }],
-        link: "/生活",
+        items: [
+          {
+            text: "2024",
+            items: [
+              {
+                text: "20240829-深圳物联网展",
+                link: "/领域实践/2024/20240829-深圳物联网展",
+              },
+              {
+                text: "20240912-镜像交换机抓包",
+                link: "/领域实践/2024/20240912-镜像交换机抓包",
+              },
+              {
+                text: "20240914-串口（Serial）连接",
+                link: "/领域实践/2024/20240914-串口（Serial）连接",
+              },
+              { text: "10月", items: [] },
+              { text: "11月", items: [] },
+              { text: "12月", items: [] },
+            ],
+          },
+        ],
+        collapsed: true,
       },
       {
         text: "📷摄影",
