@@ -9,7 +9,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: "deep",
-    logo: "/dog.png",
+    logo: "https://image-host.pages.dev/learn/2024_09_20_dog.png",
     socialLinks: [{ icon: "github", link: "https://github.com/CcNut0519" }],
     nav: [
       { text: "Home", link: "/" },
