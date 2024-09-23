@@ -28,6 +28,9 @@ export default defineConfig({
 				text: "🎓内功心法",
 				items: [
 					{
+						text: "简介", link: "/内功心法/简介"
+					},
+					{
 						text: "编程学习",
 						items: [
 							{ text: "C语言", link: "/内功心法/编程学习/C语言" },
@@ -70,6 +73,9 @@ export default defineConfig({
 			{
 				text: "🛠️招式套路",
 				items: [
+					{
+						text: "简介", link: "/招式套路/简介"
+					},
 					{ text: "Markdown Examples", link: "/招式套路/markdown-examples" },
 					{ text: "Runtime API Examples", link: "/招式套路/api-examples" },
 				],
@@ -78,6 +84,9 @@ export default defineConfig({
 			{
 				text: "💻领域实践",
 				items: [
+					{
+						text: "简介", link: "/领域实践/简介"
+					},
 					{
 						text: "2024",
 						items: [
@@ -107,6 +116,7 @@ export default defineConfig({
 			{
 				text: "📷摄影",
 				items: [
+					{ text: "简介", link: "/摄影/简介" },
 					{ text: "风景", link: "/摄影/风景" },
 					{ text: "人文", link: "/摄影/生活" },
 				],
