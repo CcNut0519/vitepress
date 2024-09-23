@@ -33,5 +33,4 @@ features:
     title: 摄影
     details: 定格生活中的那些美好
     link: /摄影
-
 ---
