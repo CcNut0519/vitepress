@@ -76,6 +76,16 @@ export default defineConfig({
 					{
 						text: "简介", link: "/招式套路/简介"
 					},
+					{
+						text: "编程", items: [
+							{ text: "gcc", link: "/招式套路/编程/gcc" },
+						]
+					},
+					{
+						text: "工具", items:[
+							{ text: "Git", link: "/招式套路/工具/Git" },
+						]
+					},
 					{ text: "Markdown Examples", link: "/招式套路/markdown-examples" },
 					{ text: "Runtime API Examples", link: "/招式套路/api-examples" },
 				],
