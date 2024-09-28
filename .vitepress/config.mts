@@ -83,7 +83,7 @@ export default defineConfig({
 					},
 					{
 						text: "工具", items:[
-							{ text: "Git", link: "/招式套路/工具/git" },
+							{ text: "git", link: "/招式套路/工具/git" },
 						]
 					},
 					{ text: "Markdown Examples", link: "/招式套路/markdown-examples" },
