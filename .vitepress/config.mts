@@ -79,6 +79,7 @@ export default defineConfig({
 					{
 						text: "编程", items: [
 							{ text: "gcc", link: "/招式套路/编程/gcc" },
+							{ text: "shell", link: "/招式套路/编程/shell" },
 						]
 					},
 					{
