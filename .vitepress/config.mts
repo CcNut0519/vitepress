@@ -35,6 +35,8 @@ export default defineConfig({
 						items: [
 							{ text: "C语言", link: "/内功心法/编程学习/C语言" },
 							{ text: "JavaScript", link: "/内功心法/编程学习/JavaScript" },
+							{ text: "gcc", link: "/内功心法/编程学习/gcc" },
+							{ text: "shell", link: "/内功心法/编程学习/shell" },
 						],
 						collapsed: true,
 					},
@@ -77,13 +79,7 @@ export default defineConfig({
 						text: "简介", link: "/招式套路/简介"
 					},
 					{
-						text: "编程", items: [
-							{ text: "gcc", link: "/招式套路/编程/gcc" },
-							{ text: "shell", link: "/招式套路/编程/shell" },
-						]
-					},
-					{
-						text: "工具", items:[
+						text: "工具", items: [
 							{ text: "git", link: "/招式套路/工具/git" },
 						]
 					},
