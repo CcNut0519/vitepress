@@ -33,7 +33,7 @@ $ git commit -m "first commit"	# 提交暂存区到仓库，-m后面是提交信
 ```
 
 ::: tip
-`$ git commit --amend`	用于修改最近一次提交，修改的是上一次提交，而不是创建新的提交
+`$ git commit --amend` 	用于修改最近一次提交，修改的是上一次提交，而不是创建新的提交
 :::
 
 ## 版本管理
@@ -46,6 +46,7 @@ $ git commit -m "first commit"	# 提交暂存区到仓库，-m后面是提交信
 3. 我们每个开发者都应该在`dev`分支上创建自己的分支，随时向`dev`分支合并
 
 ![实际开发分支图](https://image-host.pages.dev/learn/2024_09_26_202409261810394.png)
+
 :::
 
 ### 查看
@@ -108,7 +109,7 @@ $ git merge --no-ff -m "message" <branch>	# 禁止Fast-Forward合并，这会生
 ```
 
 ::: warning
-但当两个分支包含的文件内容有冲突时，需要手动解决冲突，使用`git status`可以查看冲突的文件，手动修改冲突文件，解决完冲突后使用`git add`将修改的文件添加到暂存区，然后再次`git commit`提交
+但当两个分支包含的文件内容有冲突时，需要手动解决冲突，使用 `git status` 可以查看冲突的文件，手动修改冲突文件，解决完冲突后使用 `git add` 将修改的文件添加到暂存区，然后再次 `git commit` 提交
 :::
 
 ## 远程仓库
@@ -144,7 +145,7 @@ $ git pull origin master	# 从远程仓库origin的master分支拉取
 ```
 
 ::: tip
-`$ git pull --rebase`	使用--rebase选项可以将远程分支的提交应用到你当前分支的顶部，而不是进行合并
+`$ git pull --rebase` 	使用--rebase选项可以将远程分支的提交应用到你当前分支的顶部，而不是进行合并
 :::
 
 ## 工作情景
@@ -154,41 +155,39 @@ $ git pull origin master	# 从远程仓库origin的master分支拉取
 ::: info 概述
 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 
-当手头工作没有完成时，先把工作现场`git stash`一下，然后去修复bug，修复后，再`git stash pop`，回到工作现场；
+当手头工作没有完成时，先把工作现场 `git stash` 一下，然后去修复bug，修复后，再 `git stash pop` ，回到工作现场；
 
-在`master`分支上修复的bug，想要合并到当前`dev`分支，可以用`git cherry-pick <commit>`命令，把bug提交的修改“复制”到当前分支，避免重复劳动
+在 `master` 分支上修复的bug，想要合并到当前 `dev` 分支，可以用 `git cherry-pick <commit>` 命令，把bug提交的修改“复制”到当前分支，避免重复劳动
 :::
 
-当我们接到一个编号为`#123`的紧急BUG，我们需要本地新建一个`issue-123`分支来修复，但是此时我们又正在完成一个`dev`上的任务还未提交，预计完成还要一周
+当我们接到一个编号为 `#123` 的紧急BUG，我们需要本地新建一个 `issue-123` 分支来修复，但是此时我们又正在完成一个 `dev` 上的任务还未提交，预计完成还要一周
 
-这个时候我们可以使用`git stash`来将当前工作现场存储起来，此时工作区恢复到当前提交的状态，然后使用`git switch`切换到指定分支创建临时分支`issue-123`来修复BUG，修复完成后进行合并，最后删除临时分支`issue-123`
+这个时候我们可以使用 `git stash` 来将当前工作现场存储起来，此时工作区恢复到当前提交的状态，然后使用 `git switch` 切换到指定分支创建临时分支 `issue-123` 来修复BUG，修复完成后进行合并，最后删除临时分支 `issue-123`
 
-此时我们成功修复了BUG，使用`git switch dev`回到工作分支，但是工作现场此时在`git stash list`中，使用`git stash pop`恢复分支同时删除了`git stash list`中的内容
+此时我们成功修复了BUG，使用 `git switch dev` 回到工作分支，但是工作现场此时在 `git stash list` 中，使用 `git stash pop` 恢复分支同时删除了 `git stash list` 中的内容
 
-但是`dev`是由`master`分出来的，也存在这个BUG，可以使用`git cherry-pick <commit-hash>`复制指定的提交节点到当前分支
+但是 `dev` 是由 `master` 分出来的，也存在这个BUG，可以使用 `git cherry-pick <commit-hash>` 复制指定的提交节点到当前分支
 
 ### 新功能开发
 
 ::: info 概述
-新功能开发时，我们会通过创建新的功能分支进行开发，然后合并，最后`feature`分支
+新功能开发时，我们会通过创建新的功能分支进行开发，然后合并，最后 `feature` 分支
 :::
 
 ::: warning
-如果功能开发完毕准备合并时突然告知取消新功能，需要删除此时未合并的`feature`分支，必须使用`-D`参数来强制删除
+如果功能开发完毕准备合并时突然告知取消新功能，需要删除此时未合并的 `feature` 分支，必须使用 `-D` 参数来强制删除
 :::
 
 ### 多人协作冲突
 
 1. 在`push`前先使用`git pull`拉取最新代码
-
 	::: warning
-	如果`git pull`提示`no tracking information`，因为远程分支和本地分支之间没有建立链接，需要使用`git branch --set-upstream-to origin/<branch>`建立链接
+	如果 `git pull` 提示 `no tracking information` ，因为远程分支和本地分支之间没有建立链接，需要使用 `git branch --set-upstream-to origin/<branch>` 建立链接
 	:::
 
 2. 如果发现有冲突则解决冲突并在本地提交
-
 	::: warning
-	这个时候出现了一个问题，解决冲突实际是将`pull`下来的分支和本地分支合并，这个时候如果`pull`提交上去就会使远程分支结构十分丑陋，这个时候需要使用`git rebase`将远程分支变成线性结构，原理是将`pull`下来的分支作为当前分支的父节点
+	这个时候出现了一个问题，解决冲突实际是将 `pull` 下来的分支和本地分支合并，这个时候如果 `pull` 提交上去就会使远程分支结构十分丑陋，这个时候需要使用 `git rebase` 将远程分支变成线性结构，原理是将 `pull` 下来的分支作为当前分支的父节点
 	:::
 
 3. 再次使用`git pull`
@@ -196,16 +195,16 @@ $ git pull origin master	# 从远程仓库origin的master分支拉取
 ### 标签管理
 
 ::: info
-相比于冗长的`commit-id`，标签可以更直观的看到版本信息且容易记忆
+相比于冗长的 `commit-id` ，标签可以更直观的看到版本信息且容易记忆
 
 一般在发布新版本的时候会打赏2版本号的标签，所以，标签是版本库的一个快照
 :::
 
-在git中打标签首先需要切换到打标签的分支上，然后使用`git tag <tagname>`命令打标签
+在git中打标签首先需要切换到打标签的分支上，然后使用 `git tag <tagname>` 命令打标签
 
-对某一次提交打标签使用`git tag <tagname> <commit-id>`
+对某一次提交打标签使用 `git tag <tagname> <commit-id>`
 
-还可以创建带说明的标签：`git tag -a <tagname> -m "说明信息"`
+还可以创建带说明的标签： `git tag -a <tagname> -m "说明信息"`
 
 ::: warning 注意
 标签总是和commit-id绑定，如果一个commit同时在两个分支上，那么可以分别在这两个分支看到这个标签
@@ -230,7 +229,7 @@ $ git config --global color.ui true	# 开启颜色显示（默认开启）
 
 ### gitignore
 
-一般放在仓库根目录下，当然一个仓库也可以有多个`gitignore`文件，放在哪个目录就对哪个目录生效
+一般放在仓库根目录下，当然一个仓库也可以有多个 `gitignore` 文件，放在哪个目录就对哪个目录生效
 
 ```bash
 # 排除所有.开头的隐藏文件:
@@ -249,6 +248,6 @@ $ git config --global color.ui true	# 开启颜色显示（默认开启）
 $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"	# 将后面一长串命令叫做lg
 ```
 
-此时`git lg`输出的日志信息会带有颜色、分支图、提交信息等，方便查看
+此时 `git lg` 输出的日志信息会带有颜色、分支图、提交信息等，方便查看
 
 ![git lg输出](https://image-host.pages.dev/learn/2024_09_28_202409281623592.png)
