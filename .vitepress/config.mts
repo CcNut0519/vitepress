@@ -124,8 +124,18 @@ export default defineConfig({
 				text: "📷摄影",
 				items: [
 					{ text: "简介", link: "/摄影/简介" },
-					{ text: "风景", link: "/摄影/风景" },
-					{ text: "人文", link: "/摄影/生活" },
+					{
+						text: "北京", items: [
+
+						],
+						collapsed: true,
+					},
+					{
+						text: "深圳", items: [
+							{ text: "20240916-深圳湾-单骑", link: "/摄影/深圳/20240916-深圳湾-单骑" },
+						],
+						collapsed: true,
+					},
 				],
 				link: "/摄影",
 			},
