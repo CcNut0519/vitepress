@@ -164,7 +164,7 @@ pid_t waitpid(pid_t pid, int *wstatus, int options);	// 与wait功能类似，�
 ::: info IPC通信的方式：
 
 * [pipe（匿名管道）](#pipe（匿名管道）)
-* [FIFO（有名管道）](FIFO（有名管道）)
+* [FIFO（有名管道）](#FIFO（有名管道）)
 * [消息队列](#消息队列)
 * [共享内存](#共享内存)
 * [mmap（内存映射I/O）](#mmap（内存映射I/O）)
