@@ -75,18 +75,18 @@ fork子进程完全复制父进程的栈空间，也复制了页表，但没有�
 #include <unistd.h>
 
 int main(void) {
-    pid_t pid = fork();
-    if(pid == 0) {
-        printf("I am child, ppid = %d\n", getppid());
-        sleep(2);
-        printf("I am child, ppid = %d\n", getppid());
+	pid_t pid = fork();
+	if(pid == 0) {
+		printf("I am child, ppid = %d\n", getppid());
+		sleep(2);
+		printf("I am child, ppid = %d\n", getppid());
 		while(1);
-    }
-    else if(pid > 0) {
-        sleep(1);
-        printf("parent killed\n");
-    }
-    return 0;
+	}
+	else if(pid > 0) {
+		sleep(1);
+		printf("parent killed\n");
+	}
+	return 0;
 }
 ```
 
@@ -101,19 +101,19 @@ int main(void) {
 #include <unistd.h>
 
 int main(void) {
-    pid_t pid = fork();
-    if(pid == 0) {
-        printf("I am child, pid = %d, ppid = %d\n", getpid(), getppid());
-        sleep(1);
-        printf("child killed\n");
-    }
-    else if(pid > 0) {
-        while(1) {
-            printf("I am parent, pid = %d\n", getpid());
-            sleep(20);
-        }
-    }
-    return 0;
+	pid_t pid = fork();
+	if(pid == 0) {
+		printf("I am child, pid = %d, ppid = %d\n", getpid(), getppid());
+		sleep(1);
+		printf("child killed\n");
+	}
+	else if(pid > 0) {
+		while(1) {
+			printf("I am parent, pid = %d\n", getpid());
+			sleep(20);
+		}
+	}
+	return 0;
 
 	/*
 	wangyin+   55672  0.0  0.0   2680  1536 pts/6    S+   09:25   0:00 ./c_process 3
@@ -205,23 +205,23 @@ int pipe(int pipefd[2]);
 #include <unistd.h>
 
 int main(void) {
-    int fd[2];
-    pipe(fd);
-    pid_t pid = fork();
-    if(pid == 0) {
-        char buf[256];
-        // 读，阻塞
-        read(fd[0], buf, sizeof(buf));
-        printf("read: %s\n", buf);
-    }
-    else if(pid > 0){
-        sleep(1);
-        char buf[256] = "hello world";
-        printf("write: %s\n", buf);
-        // 写
-        write(fd[1], buf, sizeof(buf));
-    }
-    return 0;
+	int fd[2];
+	pipe(fd);
+	pid_t pid = fork();
+	if(pid == 0) {
+		char buf[256];
+		// 读，阻塞
+		read(fd[0], buf, sizeof(buf));
+		printf("read: %s\n", buf);
+	}
+	else if(pid > 0){
+		sleep(1);
+		char buf[256] = "hello world";
+		printf("write: %s\n", buf);
+		// 写
+		write(fd[1], buf, sizeof(buf));
+	}
+	return 0;
 }
 ```
 
@@ -234,24 +234,24 @@ int main(void) {
 #include <unistd.h>
 
 int main(void) {
-    int fd[2];
-    pipe(fd);
-    pid_t pid = fork();
-    if(pid == 0) {
-        // 关闭读端
-        close(fd[0]);
-        // 将标准输出重定向到写端
-        dup2(fd[1], STDOUT_FILENO);
-        execlp("ps", "ps", "-aux", NULL);
-    }
-    else if(pid > 0){
-        // 关闭写端
-        close(fd[1]);
-        // 将标准输入重定向到读端
-        dup2(fd[0], STDIN_FILENO);
-        execlp("grep", "grep", "bash", NULL);
-    }
-    return 0;
+	int fd[2];
+	pipe(fd);
+	pid_t pid = fork();
+	if(pid == 0) {
+		// 关闭读端
+		close(fd[0]);
+		// 将标准输出重定向到写端
+		dup2(fd[1], STDOUT_FILENO);
+		execlp("ps", "ps", "-aux", NULL);
+	}
+	else if(pid > 0){
+		// 关闭写端
+		close(fd[1]);
+		// 将标准输入重定向到读端
+		dup2(fd[0], STDIN_FILENO);
+		execlp("grep", "grep", "bash", NULL);
+	}
+	return 0;
 }
 ```
 
@@ -278,11 +278,11 @@ mkfifo myfifo	# 创建名为myfifo的管道
 #include <fcntl.h>
 
 int main(void) {
-    printf("begin open---\n");
-    int fd = open("myfifo", O_WRONLY);
-    printf("end open---\n");
-    write(fd, "hello\nhello1\n", 14);
-    return 0;
+	printf("begin open---\n");
+	int fd = open("myfifo", O_WRONLY);
+	printf("end open---\n");
+	write(fd, "hello\nhello1\n", 14);
+	return 0;
 }
 ```
 
@@ -296,19 +296,19 @@ int main(void) {
 #include <unistd.h>
 
 int main(void) {
-    printf("begin open---\n");
-    int fd = open("myfifo", O_RDONLY);
-    printf("end open---\n");
-    char buf[12]={0};
-    int i = 0;
-    while(1){
-        memset(buf, 0x00, sizeof(buf));
-        int ret = read(fd, buf, sizeof(buf));
-        if (ret == 0) break;
-        printf("%s", buf);
-    }
-    
-    return 0;
+	printf("begin open---\n");
+	int fd = open("myfifo", O_RDONLY);
+	printf("end open---\n");
+	char buf[12]={0};
+	int i = 0;
+	while(1){
+		memset(buf, 0x00, sizeof(buf));
+		int ret = read(fd, buf, sizeof(buf));
+		if (ret == 0) break;
+		printf("%s", buf);
+	}
+	
+	return 0;
 }
 ```
 
@@ -330,21 +330,21 @@ int main(void) {
   * @param  addr    指定映射的虚拟内存地址，一般传NULL，由内核自动选择合适的虚拟内存地址
   * @param	length	映射区长度
   * @param	prot	映射内存的保护模式，可选值如下
-  					- PROT_EXEC		可被访问
-  					- PROT_READ		可读
-  					- PROT_WRITE 	可写
-  					- PROT_NONE		不可访问
+					- PROT_EXEC		可被访问
+					- PROT_READ		可读
+					- PROT_WRITE 	可写
+					- PROT_NONE		不可访问
   * @param	flags	指定映射的类型，常用可选值如下
-  					- MAP_SHARED	与其他所有映射到该文件的进程共享映射空间（用于IPC），写时立刻修改源文件
-  					- MAP_PRIVATE	建立一个写时复制的私有映射空间，写时不修改源文件
-  					- MAP_ANON		映射不需要依赖某个文件，忽略fd参数，fd参数必须为-1，且offset应为0，也可写为
-  									MAP_ANONYMOUS
+					- MAP_SHARED	与其他所有映射到该文件的进程共享映射空间（用于IPC），写时立刻修改源文件
+					- MAP_PRIVATE	建立一个写时复制的私有映射空间，写时不修改源文件
+					- MAP_ANON		映射不需要依赖某个文件，忽略fd参数，fd参数必须为-1，且offset应为0，也可写为
+									MAP_ANONYMOUS
   * @param	fd		文件描述符
   * @param	offset	文件偏移量（从文件的何处开始映射）
   * @retval 成功返回可用的内存地址，失败返回MAP_FAILED
   */
 void *mmap(void *addr, size_t length, int prot, int flags,
-                  int fd, off_t offset);
+				  int fd, off_t offset);
 
 /**
   * @brief  释放映射区
@@ -365,28 +365,28 @@ int munmap(void *addr, size_t length);
 #include <fcntl.h>
 
 int main(void) {
-    int fd = open("mem.txt", O_RDWR | O_CREAT, 0666);
-    int mmap_size = 128;
-    // 获取文件状态，判断文件大小是否大于mmap需要的大小
-    struct stat sb;
-    fstat(fd, &sb);
-    int file_size = sb.st_size;
-    if(file_size < mmap_size){
-        printf("文件大小小于映射区需要大小，扩展文件\n");
-        // 扩展文件
-        ftruncate(fd, mmap_size);
-    }
-    // 获取mmap映射地址，flags改为MAP_PRIVATE不会改变源文件
-    char *mem = (char *)mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-    if(mem == MAP_FAILED){
-        perror("mmap err");
-        return -1;
-    }
-    strcpy(mem, "hello\nworld\n");
-    // 释放mmap
-    munmap(mem, mmap_size);
-    close(fd);
-    return 0;
+	int fd = open("mem.txt", O_RDWR | O_CREAT, 0666);
+	int mmap_size = 128;
+	// 获取文件状态，判断文件大小是否大于mmap需要的大小
+	struct stat sb;
+	fstat(fd, &sb);
+	int file_size = sb.st_size;
+	if(file_size < mmap_size){
+		printf("文件大小小于映射区需要大小，扩展文件\n");
+		// 扩展文件
+		ftruncate(fd, mmap_size);
+	}
+	// 获取mmap映射地址，flags改为MAP_PRIVATE不会改变源文件
+	char *mem = (char *)mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	if(mem == MAP_FAILED){
+		perror("mmap err");
+		return -1;
+	}
+	strcpy(mem, "hello\nworld\n");
+	// 释放mmap
+	munmap(mem, mmap_size);
+	close(fd);
+	return 0;
 }
 ```
 
@@ -402,39 +402,39 @@ mmap实现父子进程通信：
 #include <fcntl.h>
 
 int main(void) {
-    // 将文件大小置为0，然后扩展文件到指定映射区大小
-    int fd = open("mem.txt", O_RDWR | O_CREAT | O_TRUNC, 0666);
-    int mmap_size = 128;
-    ftruncate(fd, mmap_size);
-    // 获取mmap映射地址
-    int *mem = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-    if(mem == MAP_FAILED){
-        perror("mmap err");
-        return -1;
-    }
-    
-    // 创建子进程
-    pid_t pid = fork();
-    if(pid == 0){
-        // child
-        mem[0] = 100;
-        printf("child, mem[0] = %d\n", mem[0]);
-        sleep(3);
-        printf("child, mem[0] = %d\n", mem[0]);
-    }
-    else if(pid > 0){
-        // parent
-        sleep(1);
-        printf("parent, mem[0] = %d\n", mem[0]);
-        mem[0] = 1001;
-        printf("parent, mem[0] = %d\n", mem[0]);
-        wait(NULL);
-    }
+	// 将文件大小置为0，然后扩展文件到指定映射区大小
+	int fd = open("mem.txt", O_RDWR | O_CREAT | O_TRUNC, 0666);
+	int mmap_size = 128;
+	ftruncate(fd, mmap_size);
+	// 获取mmap映射地址
+	int *mem = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+	if(mem == MAP_FAILED){
+		perror("mmap err");
+		return -1;
+	}
+	
+	// 创建子进程
+	pid_t pid = fork();
+	if(pid == 0){
+		// child
+		mem[0] = 100;
+		printf("child, mem[0] = %d\n", mem[0]);
+		sleep(3);
+		printf("child, mem[0] = %d\n", mem[0]);
+	}
+	else if(pid > 0){
+		// parent
+		sleep(1);
+		printf("parent, mem[0] = %d\n", mem[0]);
+		mem[0] = 1001;
+		printf("parent, mem[0] = %d\n", mem[0]);
+		wait(NULL);
+	}
 
-    // 释放mmap
-    munmap(mem, mmap_size);
-    close(fd);
-    return 0;
+	// 释放mmap
+	munmap(mem, mmap_size);
+	close(fd);
+	return 0;
 }
 ```
 
@@ -559,10 +559,10 @@ int *mem = mmap(NULL, mmap_size, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYM
 /**
   * @brief  给指定进程发送信号
   * @param  pid	信号发送的进程
-  			pid > 0		pid指定的进程
-  			pid = 0 	调用进程的进程组内的每个进程
-  			pid = -1	调用进程有权限发送信号的每个进程，但不包括init进程（进程1）
-  			pid < -1	进程组ID为-pid内的每个进程
+			pid > 0		pid指定的进程
+			pid = 0 	调用进程的进程组内的每个进程
+			pid = -1	调用进程有权限发送信号的每个进程，但不包括init进程（进程1）
+			pid < -1	进程组ID为-pid内的每个进程
   * @param  sig	发送的信号，可以用man 7 signal查看
   * @retval 失败返回-1。成功返回0
   */
@@ -592,8 +592,8 @@ int raise(int sig);
 /**
   * @brief  在 seconds 秒后将一个 SIGALRM(14) 信号发送给调用进程，设置一个定时器，且取消之前的定时器（一个进程只有一个定时器）
   * @param  seconds
-  			seconds > 0	发送的时间
-  			seconds = 0	取消先前设置的定时器
+			seconds > 0	发送的时间
+			seconds = 0	取消先前设置的定时器
   * @retval 返回先前设定的定时器触发的剩余秒数，如果之前没有计划的定时器，则返回零。
   */
 unsigned int alarm(unsigned int seconds);
@@ -605,21 +605,21 @@ unsigned int alarm(unsigned int seconds);
 #include <sys/time.h>
 
 struct itimerval {
-    struct timeval it_interval; /* 周期定时器的间隔。如果it_interval两个字段都为0，说明这是一个单次定时器（即它在到期时过期） */
-    struct timeval it_value;    /* 距离下一次到期的时间。定时器到期后重置为it_interval。如果it_value两个字段都为0，说明定时器当前处于非活动状态 */
+	struct timeval it_interval; /* 周期定时器的间隔。如果it_interval两个字段都为0，说明这是一个单次定时器（即它在到期时过期） */
+	struct timeval it_value;    /* 距离下一次到期的时间。定时器到期后重置为it_interval。如果it_value两个字段都为0，说明定时器当前处于非活动状态 */
 };
 
 struct timeval {
-    time_t      tv_sec;         /* 秒 */
-    suseconds_t tv_usec;        /* 微秒 */
+	time_t      tv_sec;         /* 秒 */
+	suseconds_t tv_usec;        /* 微秒 */
 };
 
 /**
   * @brief  获取指定的定时器的当前值，存放在curr_value中
   * @param  which	选择定时器类型，可选值如下：
-  			ITIMER_REAL		真实时间作为倒计时，到期产生SIGALRM信号
-  			ITIMER_VIRTUAL	用户空间下进程消耗的CPU时间作为倒计时，到期产生SIGVTALRM信号
-  			ITIMER_PROF		进程消耗的总CPU时间（用户和内核）作为倒计时，到期产生SIGPROF信号
+			ITIMER_REAL		真实时间作为倒计时，到期产生SIGALRM信号
+			ITIMER_VIRTUAL	用户空间下进程消耗的CPU时间作为倒计时，到期产生SIGVTALRM信号
+			ITIMER_PROF		进程消耗的总CPU时间（用户和内核）作为倒计时，到期产生SIGPROF信号
   * @retval 成功返回0，失败返回-1且设置errno
   */
 int getitimer(int which, struct itimerval *curr_value);
@@ -627,15 +627,15 @@ int getitimer(int which, struct itimerval *curr_value);
 /**
   * @brief  设置定时器
   * @param  which		选择定时器类型，可选值如下：
-  			ITIMER_REAL		真实时间作为倒计时，到期产生SIGALRM(14)信号
-  			ITIMER_VIRTUAL	用户空间下进程消耗的CPU时间作为倒计时，到期产生SIGVTALRM(26)信号
-  			ITIMER_PROF		进程消耗的总CPU时间（用户和系统）作为倒计时，到期产生SIGPROF(27)信号
+			ITIMER_REAL		真实时间作为倒计时，到期产生SIGALRM(14)信号
+			ITIMER_VIRTUAL	用户空间下进程消耗的CPU时间作为倒计时，到期产生SIGVTALRM(26)信号
+			ITIMER_PROF		进程消耗的总CPU时间（用户和系统）作为倒计时，到期产生SIGPROF(27)信号
   *	@param  new_value	设置定时器的新值，可以启动或解除which指定的定时器，参考itimerval
   * @param  old_value	非空获取定时器的旧值，即与getitimer相同。一般设置为NULL
   * @retval 成功返回0，失败返回-1且设置errno
   */
 int setitimer(int which, const struct itimerval *new_value,
-              struct itimerval *old_value);
+			  struct itimerval *old_value);
 ```
 
 **信号集处理函数：**
@@ -685,9 +685,9 @@ int sigismember(const sigset_t *set, int signum);
 /**
   * @brief  设置阻塞或者解除阻塞信号集
   *	@param  how 	信号集，可选值如下
-  			SIG_BLOCK	设置set阻塞
-  			SIG_UNBLOCK	解除set阻塞
-  			SIG_SETMASK	设置set为新的阻塞信号集
+			SIG_BLOCK	设置set阻塞
+			SIG_UNBLOCK	解除set阻塞
+			SIG_SETMASK	设置set为新的阻塞信号集
   *	@param  set		信号集
   * @param	oldset	旧的信号集，可以用来恢复原来状态
   * @retval 成功时返回0，失败时返回-1，且设置errno
@@ -714,19 +714,19 @@ typedef void (*sighandler_t)(int);
   * @brief  将信号 signum 的处理方式设置为 handler
   *	@param  signum	信号
   * @param  handler	信号处理方式，可选值如下
-  			SIG_IGN			忽略信号
-  			SIG_DFL			执行与信号相关的默认操作
-  			用户函数地址		执行用户函数
+			SIG_IGN			忽略信号
+			SIG_DFL			执行与信号相关的默认操作
+			用户函数地址		执行用户函数
   * @retval 返回信号处理程序的先前值，或者在出错时返回SIG_ERR，且设置errno
   */
 sighandler_t signal(int signum, sighandler_t handler);
 
 struct sigaction {
-    void     (*sa_handler)(int);	// 捕捉信号后执行的程序
-    void     (*sa_sigaction)(int, siginfo_t *, void *);	// 捕捉信号后执行的程序，携带附加信息siginfo_t
-    sigset_t   sa_mask;				// 执行捕捉函数期间，临时屏蔽的信号集
-    int        sa_flags;			// 一般置0，使用sa_handler，置SA_SIGINFO时使用sa_sigaction
-    void     (*sa_restorer)(void);	// 无效参数
+	void     (*sa_handler)(int);	// 捕捉信号后执行的程序
+	void     (*sa_sigaction)(int, siginfo_t *, void *);	// 捕捉信号后执行的程序，携带附加信息siginfo_t
+	sigset_t   sa_mask;				// 执行捕捉函数期间，临时屏蔽的信号集
+	int        sa_flags;			// 一般置0，使用sa_handler，置SA_SIGINFO时使用sa_sigaction
+	void     (*sa_restorer)(void);	// 无效参数
 };
 
 /**
