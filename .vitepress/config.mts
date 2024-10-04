@@ -133,6 +133,7 @@ export default defineConfig({
 					{
 						text: "深圳", items: [
 							{ text: "20240916-深圳湾-单骑", link: "/摄影/深圳/20240916-深圳湾-单骑" },
+							{ text: "20240901-南山公园&蛇口", link: "/摄影/深圳/20240901-南山公园&蛇口" },
 						],
 						collapsed: true,
 					},
