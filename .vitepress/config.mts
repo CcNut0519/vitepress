@@ -41,6 +41,13 @@ export default defineConfig({
 						collapsed: true,
 					},
 					{
+						text: "Linux",
+						items: [
+							{ text: "iptables", link: "/内功心法/Linux/iptables" }
+						],
+						collapsed: true,
+					},
+					{
 						text: "计算机网络",
 						items: [
 							{ text: "数据链路层", items: [] },
@@ -134,6 +141,7 @@ export default defineConfig({
 						text: "深圳", items: [
 							{ text: "20240916-深圳湾-单骑", link: "/摄影/深圳/20240916-深圳湾-单骑" },
 							{ text: "20240901-南山公园&蛇口", link: "/摄影/深圳/20240901-南山公园&蛇口" },
+							{ text: "20241002-环南山区&欢乐港湾", link: "/摄影/深圳/20241002-环南山区&欢乐港湾" },
 						],
 						collapsed: true,
 					},
