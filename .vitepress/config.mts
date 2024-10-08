@@ -63,6 +63,7 @@ export default defineConfig({
 							{
 								text: "Linux", items: [
 									{ text: "iptables", link: "/内功心法/操作系统/Linux/iptables" },
+									{ text: "如何让CPU跑得更快", link: "/内功心法/操作系统/Linux/如何让CPU跑得更快" }
 								], collapsed: true
 							},
 							{ text: "Windows", items: [], collapsed: true },
@@ -71,7 +72,6 @@ export default defineConfig({
 					},
 					{ text: "算法&数据结构", items: [], collapsed: true },
 					{ text: "软件测试", items: [], collapsed: true },
-					{ text: "好问题", items: [] },
 					{ text: "为人处世", items: [] },
 				],
 				collapsed: true,
