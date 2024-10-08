@@ -41,13 +41,6 @@ export default defineConfig({
 						collapsed: true,
 					},
 					{
-						text: "Linux",
-						items: [
-							{ text: "iptables", link: "/内功心法/Linux/iptables" }
-						],
-						collapsed: true,
-					},
-					{
 						text: "计算机网络",
 						items: [
 							{ text: "数据链路层", link: "/内功心法/计算机网络/数据链路层" },
@@ -67,7 +60,11 @@ export default defineConfig({
 					{
 						text: "操作系统",
 						items: [
-							{ text: "Linux", items: [], collapsed: true },
+							{
+								text: "Linux", items: [
+									{ text: "iptables", link: "/内功心法/操作系统/Linux/iptables" },
+								], collapsed: true
+							},
 							{ text: "Windows", items: [], collapsed: true },
 						],
 						collapsed: true,
