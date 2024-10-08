@@ -50,7 +50,7 @@ export default defineConfig({
 					{
 						text: "计算机网络",
 						items: [
-							{ text: "数据链路层", items: [] },
+							{ text: "数据链路层", link: "/内功心法/计算机网络/数据链路层" },
 							{ text: "网络层", link: "/内功心法/计算机网络/网络层" },
 							{
 								text: "传输层",
