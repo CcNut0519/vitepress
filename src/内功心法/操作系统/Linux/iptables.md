@@ -6,8 +6,6 @@
 
 可能是因为国家的访问限制，也可能是因为网站的服务器根本不想让我们访问
 
-这是怎么做到的？
-
 ## 网络流量的路径
 
 可以将服务器划分为硬件（网卡），内核空间，用户空间三部分
@@ -84,7 +82,7 @@ target     prot opt source               destination
 **为表中指定的链添加规则：**
 
 ```bash
-wangyining@xubuntu:~$ \
+wangyining@xubuntu:~$ sudo \
 > iptables \
 > -- table filter \ # 指定filter表
 > --append INPUT \ # 指定INPUT链
@@ -134,7 +132,7 @@ num  target     prot opt source               destination
 **删除规则：**
 
 ```bash
-wangyining@xubuntu:~$ iptables --table filter --delete INPUT 1  # 删除INPUT链的第1条规则
+wangyining@xubuntu:~$ sudo iptables --table filter --delete INPUT 1  # 删除INPUT链的第1条规则
 ```
 
 此时第二条规则就会自动顺延为第一条：
@@ -235,3 +233,17 @@ $ sudo iptables-save > /etc/test.iptables
 $ sudo ipset restore < /etc/test.ipset
 $ sudo iptables-restore < /etc/test.iptables
 ```
+
+## 思考
+
+::: details 如果想过滤下游服务器的访问，操作哪个链？
+操作`FORWARD`链
+:::
+
+::: details 为什么ipset比iptables更适合过滤大量IP？
+因为ipset使用哈希表索引，而iptables是线性匹配，时间复杂度较大
+:::
+
+::: details 不使用iptables工具，如何操作netfilter？
+可以通过编程语言调用netfilter库，自己编写规则
+:::

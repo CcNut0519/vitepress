@@ -34,6 +34,7 @@ export default defineConfig({
 						text: "编程学习",
 						items: [
 							{ text: "C语言", link: "/内功心法/编程学习/C语言" },
+							{ text: "CMake", link: "/内功心法/编程学习/CMake" },
 							{ text: "JavaScript", link: "/内功心法/编程学习/JavaScript" },
 							{ text: "gcc", link: "/内功心法/编程学习/gcc" },
 							{ text: "shell", link: "/内功心法/编程学习/shell" },
