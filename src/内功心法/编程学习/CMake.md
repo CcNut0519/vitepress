@@ -78,3 +78,24 @@ set(CMAKE_C_STANDRAD 11)
 target_include_directories(C_Project PUBLIC include)
 ```
 
+* 条件语句：
+
+```cmake
+if(expression)
+  # Commands
+elseif(expression)
+  # Commands
+else()
+  # Commands
+endif()
+```
+
+* 自定义命令：
+
+```cmake
+add_custom_command(
+   TARGET MyExecutable POST_BUILD
+   COMMAND ${CMAKE_COMMAND} -E echo "Build completed."
+)
+```
+
