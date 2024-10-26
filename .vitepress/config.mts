@@ -64,6 +64,7 @@ export default defineConfig({
 							{
 								text: "Linux", items: [
 									{ text: "iptables", link: "/内功心法/操作系统/Linux/iptables" },
+									{ text: "netfilter", link: "/内功心法/操作系统/Linux/netfilter" },
 									{ text: "如何让CPU跑得更快", link: "/内功心法/操作系统/Linux/如何让CPU跑得更快" }
 								], collapsed: true
 							},
