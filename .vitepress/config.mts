@@ -72,6 +72,17 @@ export default defineConfig({
 						],
 						collapsed: true,
 					},
+					{
+						text: "工作",
+						items: [
+							{
+								text: "微网", items: [
+									{ text: "无线定时模块", link: "/内功心法/工作/微网/无线定时模块.md" },
+								], collapsed: true
+							},
+						],
+						collapsed: true,
+					},
 					{ text: "算法&数据结构", items: [], collapsed: true },
 					{ text: "软件测试", items: [], collapsed: true },
 					{ text: "为人处世", items: [] },
